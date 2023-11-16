@@ -63,3 +63,21 @@ body {
   right: calc(50% + 500px);
   background-color: #7a73ff;
 }
+
+@media (max-width: 1112px) {
+  .stripRightTop {
+    left: 90%
+  }
+
+  .stripRightBottom {
+    left: calc(90% + 40px)
+  }
+
+  .stripRightMiddle {
+    left: calc(90% + 40px)
+  }
+
+  .stripLeft {
+    right: 90%;
+  }
+}

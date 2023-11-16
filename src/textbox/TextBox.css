@@ -8,3 +8,9 @@
   margin: auto;
   box-shadow: rgba(60, 66, 87, 0.08) 0px 15px 35px 0px, rgba(0, 0, 0, 0.12) 0px 5px 15px 0px;
 }
+
+@media (max-width: 1112px) {
+    .TextBoxContainer {
+        width: 60%;
+    }
+}
