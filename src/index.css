@@ -1,13 +1,65 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0px;
+  overflow-x: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  padding-top: 100px;
+}
+
+.backgroundStripTilted {
+  position: absolute;
+  z-index: 0;
+  top: -900px;
+  left: 0;
+  width: 100%;
+  height: 1250px;
+  background-color: #f7fafc;
+  /* border-bottom: 3px dashed #ebedf3; */
+  transform: skewY(-10deg);
+}
+
+/* I sort of figured out Stripe's strip design
+   by trial and error haha */
+.stripRightTop {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 35px;
+  bottom: 0;
+  left: calc(50% + 500px);
+  right: 0;
+  background-color: #7a73ff;
+}
+
+/* Is calc() safe to use? */
+.stripRightBottom {
+  z-index: 1;
+  position: absolute;
+  width: 150px;
+  height: 25px;
+  bottom: -25px;
+  left: calc(50% + 600px);
+  background-color: #80e9ff;
+}
+
+.stripRightMiddle {
+  z-index: 1;
+  position: absolute;
+  width: 150px;
+  height: 10px;
+  bottom: 0px;
+  left: calc(50% + 600px);
+  background-color: #0048e5;
+}
+
+.stripLeft {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 35px;
+  bottom: -35px;
+  /*right: 85%;*/
+  right: calc(50% + 500px);
+  background-color: #7a73ff;
 }

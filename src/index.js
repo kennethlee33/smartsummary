@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import TextBox from './textbox/TextBox.js';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <div className="backgroundStripTilted">
+      <div className="stripRightTop"></div>
+      <div className="stripRightBottom"></div>
+      <div className="stripRightMiddle"></div>
+      <div className="stripLeft"></div>
+    </div>
+    <TextBox />
   </React.StrictMode>
 );
 

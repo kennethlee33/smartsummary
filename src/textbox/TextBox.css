@@ -1,0 +1,10 @@
+.TextBoxContainer {
+  position: relative;
+  z-index: 2;
+  background-color: white;
+  border-radius: 8px;
+  width: 700px;
+  height: 600px;
+  margin: auto;
+  box-shadow: rgba(60, 66, 87, 0.08) 0px 15px 35px 0px, rgba(0, 0, 0, 0.12) 0px 5px 15px 0px;
+}
