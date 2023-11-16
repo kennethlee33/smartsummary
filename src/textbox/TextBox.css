@@ -1,16 +1,66 @@
 .TextBoxContainer {
   position: relative;
+  display: flex;
+  flex-direction: column;
   z-index: 2;
   background-color: white;
   border-radius: 8px;
-  width: 700px;
-  height: 600px;
+  width: 570px;
+  height: 500px;
   margin: auto;
+  padding-left: 65px;
+  padding-right: 65px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   box-shadow: rgba(60, 66, 87, 0.08) 0px 15px 35px 0px, rgba(0, 0, 0, 0.12) 0px 5px 15px 0px;
 }
 
+@font-face {
+  font-family: "sohne-var";
+  src: url("../fonts/Sohne-latin-basic.woff2");
+}
+
+.TextBoxTitle {
+  color: #3c4257;
+  font-size: 24px;
+  font-family: sohne-var, sans-serif;
+  line-height: 32px;
+  font-weight: 500;
+}
+
+.FormContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 435px;
+  padding-top: 25px;
+}
+
+.TextBox {
+  height: 335px;
+  resize: none;
+  padding: 15px;
+  font-family: sohne-var, sans-serif;
+  color: #3c4257;
+  box-shadow: rgba(60, 66, 87, 0.16) 0px 0px 0px 1px;
+  border: none;
+  border-radius: 5px;
+  transition-duration: 0.24s;
+}
+
+.TextBox:focus {
+  box-shadow: rgba(58, 151, 212, 0.36) 0px 0px 0px 4px;
+  outline: none;
+}
+
+.TextBoxButton {
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media (max-width: 1112px) {
-    .TextBoxContainer {
-        width: 60%;
-    }
+  .TextBoxContainer {
+    width: 60%;
+  }
 }
