@@ -65,6 +65,11 @@
   color: white;
   font-family: sohne-var, sans-serif;
   font-size: 16px;
+  transition: 0.2s linear;
+}
+
+.TextBoxButton:disabled {
+  background-color: rgba(99, 91, 255, 0.7);
 }
 
 .TextBoxButton:focus {
