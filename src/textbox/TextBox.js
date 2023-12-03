@@ -15,7 +15,7 @@ class TextBox extends React.Component {
   }
 
   isTextBoxEmpty = () => {
-    if (this.state.text === "") {
+    if (this.state.text.trim() === "") {
       return true;
     }
 
