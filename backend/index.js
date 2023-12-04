@@ -14,7 +14,7 @@ app.use(bodyParser.text());
 
 app.post("/summarize", (req, res) => {
     console.log(req.body);
-    res.json({ message: 'POST request response'})
+    res.json({ summary: req.body});
 })
 
 app.listen(PORT, () => {

@@ -6,7 +6,8 @@ class TextBox extends React.Component {
     super(props);
 
     this.state = {
-      text: ""
+      text: "",
+      loading: false,
     };
   }
 
@@ -21,7 +22,11 @@ class TextBox extends React.Component {
     return false;
   }
 
-  sendTextForSummarization = () => {
+  sendTextForSummarization = (e) => {
+    e.preventDefault();
+
+    this.setState({loading: true});
+
     fetch("http://localhost:3001/summarize", {
       method: 'POST',
       body: this.state.text
@@ -32,10 +37,25 @@ class TextBox extends React.Component {
       }
       return res.json();
     })
-    .then(data => console.log(data.message))
+    .then(data => {
+      this.setState({loading: false});
+      console.log(data.summary);
+    })
     .catch(error => {
       console.error('Error while fetching summarized text: ' + error)
     })
+
+    return false;
+  }
+
+  renderTextBoxButtonSpinner = () => {
+    if (this.state.loading === true) {
+      return (
+        <span className="TextBoxButtonLoader"></span>
+      )
+    }
+    
+    return "Summarize Text";
   }
 
   render() {
@@ -52,7 +72,7 @@ class TextBox extends React.Component {
             />
             <button
               className="TextBoxButton"
-              disabled={this.isTextBoxEmpty()}>Summarize Text</button>
+              disabled={this.isTextBoxEmpty()}>{this.renderTextBoxButtonSpinner()}</button>
           </div>
         </form>
       </div>
