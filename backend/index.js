@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const { exec } = require("child_process");
 
 const PORT = process.env.PORT || 3001;
 
@@ -13,8 +14,14 @@ app.use(cors({
 app.use(bodyParser.text());
 
 app.post("/summarize", (req, res) => {
-    console.log(req.body);
-    res.json({ summary: req.body});
+    exec(`python ./smartsummary.py "${req.body}"`, (error, stdout, stderr) => {
+        if (error) {
+            console.error("Error executing Python script.");
+            return res.status(500).json({ error: "Server Error"});
+        }
+        console.log(stdout);
+        res.json({ summary: stdout});
+    })
 })
 
 app.listen(PORT, () => {

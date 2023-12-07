@@ -54,7 +54,7 @@ class TextBox extends React.Component {
         <span className="TextBoxButtonLoader"></span>
       )
     }
-    
+
     return "Summarize Text";
   }
 
