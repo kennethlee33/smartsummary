@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const { exec } = require("child_process");
+const { spawn } = require("child_process");
 
 const PORT = process.env.PORT || 3001;
 
@@ -14,14 +14,32 @@ app.use(cors({
 app.use(bodyParser.text());
 
 app.post("/summarize", (req, res) => {
-    exec(`python ./smartsummary.py "${req.body}"`, (error, stdout, stderr) => {
-        if (error) {
-            console.error("Error executing Python script.");
+    // Mental note that there are different kinds of quotation marks...
+    // dont waste 2 hours trying to debug this ever again
+    parsedText = req.body.replace(/[\u2018\u2019]/g, "'").replace(/[\u201C\u201D]/g, "\"");
+
+    const pythonProcess = spawn('python', ['./smartsummary.py', parsedText]);
+
+    let stdout = '';
+    let stderr = '';
+
+    pythonProcess.stdout.on('data', (data) => {
+        stdout += data;
+    })
+
+    pythonProcess.stderr.on('data', (data) => {
+        stderr += data;
+    })
+
+    pythonProcess.on('close', (code) => {
+        if (code !== 0) {
+            console.error(`Error executing Python script. Exit code: ${code}`);
             return res.status(500).json({ error: "Server Error"});
         }
+
         console.log(stdout);
-        res.json({ summary: stdout});
-    })
+        res.json({summary: stdout});
+    });
 })
 
 app.listen(PORT, () => {
