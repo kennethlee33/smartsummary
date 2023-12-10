@@ -49,6 +49,10 @@
   transition-duration: 0.24s;
 }
 
+.TextBox-Summarized {
+  height: 410px;
+}
+
 .TextBox:focus {
   box-shadow: rgba(58, 151, 212, 0.36) 0px 0px 0px 2px;
   outline: none;

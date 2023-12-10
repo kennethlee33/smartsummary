@@ -8,11 +8,13 @@ class TextBox extends React.Component {
     this.state = {
       text: "",
       loading: false,
+      summarized: false
     };
   }
 
   handleTextChange = (event) => {
     this.setState({text: event.target.value});
+    this.setState({summarized: false});
   }
 
   isTextBoxEmpty = () => {
@@ -38,7 +40,9 @@ class TextBox extends React.Component {
       return res.json();
     })
     .then(data => {
+      this.setState({text: data.summary});
       this.setState({loading: false});
+      this.setState({summarized: true});
       console.log(data.summary);
     })
     .catch(error => {
@@ -58,21 +62,38 @@ class TextBox extends React.Component {
     return "Summarize Text";
   }
 
+  renderTextBoxTitleText = () => {
+    if (this.state.loading) {
+      return "Model currently processing...";
+    } else if (this.state.summarized) {
+      return "Your summarized text:";
+    }
+    return "Summarize your text below 👇";
+  }
+
+  renderTextBoxButton = () => {
+    if (!this.state.summarized) {
+      return (
+        <button
+          className="TextBoxButton"
+          disabled={this.isTextBoxEmpty()}>{this.renderTextBoxButtonSpinner()}</button>
+      )
+    }
+  }
+
   render() {
     return (
       <div className="TextBoxContainer">
-        <span className="TextBoxTitle">Summarize your text below 👇</span>
+        <span className="TextBoxTitle">{this.renderTextBoxTitleText()}</span>
         <form onSubmit={this.sendTextForSummarization}>
           <div className="FormContainer">
             <textarea
-              className="TextBox"
+              className={`TextBox ${this.state.summarized ? 'TextBox-Summarized' : ''}`}
               value={this.state.text}
               onChange={this.handleTextChange}
               spellCheck="false" 
             />
-            <button
-              className="TextBoxButton"
-              disabled={this.isTextBoxEmpty()}>{this.renderTextBoxButtonSpinner()}</button>
+            {this.renderTextBoxButton()}
           </div>
         </form>
       </div>
