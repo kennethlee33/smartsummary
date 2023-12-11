@@ -42,6 +42,10 @@ app.post("/summarize", (req, res) => {
     });
 })
 
+app.get('/vercel-test', (req, res) => {
+    res.send('Test for Vercel server deployment');
+})
+
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
