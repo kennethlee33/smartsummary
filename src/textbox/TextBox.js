@@ -29,7 +29,7 @@ class TextBox extends React.Component {
 
     this.setState({loading: true});
 
-    fetch("http://localhost:3001/summarize", {
+    fetch("https://smartsummary.bao.dev/summarize", {
       method: 'POST',
       body: this.state.text
     })
