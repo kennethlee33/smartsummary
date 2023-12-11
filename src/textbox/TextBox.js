@@ -8,7 +8,9 @@ class TextBox extends React.Component {
     this.state = {
       text: "",
       loading: false,
-      summarized: false
+      summarized: false,
+      // false for prod, true for local dev
+      development: false
     };
   }
 
@@ -29,7 +31,13 @@ class TextBox extends React.Component {
 
     this.setState({loading: true});
 
-    fetch("https://smartsummary.bao.dev/summarize", {
+    let summarizeEndpoint = "https://smartsummary.bao.dev/summarize";
+    if (this.state.development) {
+      // if in local dev, fetch from localhost
+      summarizeEndpoint = "http://localhost:3000/summarize"
+    }
+
+    fetch(summarizeEndpoint, {
       method: 'POST',
       body: this.state.text
     })

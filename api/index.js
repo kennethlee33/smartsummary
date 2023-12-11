@@ -8,7 +8,9 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(cors({
-    origin: 'https://smartsummary-aml.vercel.app/'
+    origin: [
+        'https://smartsummary-aml.vercel.app/',
+        'http://localhost:3000']
 }))
 
 app.use(bodyParser.text());

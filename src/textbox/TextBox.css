@@ -51,6 +51,7 @@
 
 .TextBox-Summarized {
   height: 410px;
+  transition-duration: 0.5s;
 }
 
 .TextBox:focus {
