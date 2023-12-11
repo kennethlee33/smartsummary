@@ -2,6 +2,11 @@ version: '3.9'
 
 services:
     smart-summary-backend:
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - capabilities: [gpu]
         container_name: smart-summary-backend
         build:
             context: .
