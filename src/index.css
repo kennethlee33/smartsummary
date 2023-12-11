@@ -64,6 +64,10 @@ body {
   background-color: #7a73ff;
 }
 
+.stripLeft, .stripRightTop, .stripRightMiddle, .stripRightBottom {
+  transition: 0.5s;
+}
+
 @media (max-width: 1112px) {
   .stripRightTop {
     left: 90%
@@ -80,4 +84,16 @@ body {
   .stripLeft {
     right: 90%;
   }
+}
+
+.backgroundSummarized .stripLeft, .backgroundSummarized .stripRightTop {
+  background-color: #00d924;
+}
+
+.backgroundSummarized .stripRightBottom {
+  background-color: #1df5e9;
+}
+
+.backgroundSummarized .stripRightMiddle {
+  background-color: #00a600
 }

@@ -51,7 +51,7 @@
 
 .TextBox-Summarized {
   height: 410px;
-  transition-duration: 0.5s;
+  transition: 0.5s;
 }
 
 .TextBox:focus {
@@ -109,14 +109,14 @@
   animation: rotation 1s linear infinite;
   }
 
-  @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+@keyframes rotation {
+  0% {
+      transform: rotate(0deg);
   }
+  100% {
+      transform: rotate(360deg);
+  }
+}
 
 @media (max-width: 1112px) {
   .TextBoxContainer {

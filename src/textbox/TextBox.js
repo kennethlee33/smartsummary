@@ -17,6 +17,7 @@ class TextBox extends React.Component {
   handleTextChange = (event) => {
     this.setState({text: event.target.value});
     this.setState({summarized: false});
+    this.props.onUpdateSummaryState(false);
   }
 
   isTextBoxEmpty = () => {
@@ -51,6 +52,7 @@ class TextBox extends React.Component {
       this.setState({text: data.summary});
       this.setState({loading: false});
       this.setState({summarized: true});
+      this.props.onUpdateSummaryState(true);
       console.log(data.summary);
     })
     .catch(error => {
